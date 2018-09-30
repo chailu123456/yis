@@ -32,7 +32,7 @@ h1, h2 {
   border-top: 1px solid pink;
 }
 ul {
-
+  background: #fff;
   list-style-type: none;
   padding: 0;
   height: 60px;

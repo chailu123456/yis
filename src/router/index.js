@@ -29,6 +29,20 @@ export default new Router({
       path:'/navs',
       name:'name',
       component:(resolve)=>require(['@/components/navs'],resolve)
+    },{
+      path:'/casebtn',
+      name:'casebtn',
+      component:(resolve)=>require(['@/page/casebtn'],resolve)
+    },
+    {
+      path:'/decortbtn',
+      name:'decortbtn',
+      component:(resolve)=>require(['@/page/decortbtn'],resolve)
+    },
+    {
+      path:'/decortList',
+      name:'decortList',
+      component:(resolve)=>require(['@/page/decortList'],resolve)
     }
   ]
 })
