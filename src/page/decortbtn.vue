@@ -1,6 +1,7 @@
 
 <template>
     <div class="decortbtn">
+        <back></back>
         <div class="box">
              <h4 class="title">{{title}}</h4>
             <p class="where">来源：时间{{dateline}}浏览：{{look}}</p>
@@ -16,8 +17,8 @@
 
 <script>
 import axios from 'axios';
-import { Lazyload} from 'vant';
-
+import back from '@/components/back';
+import {List,NavBar,Lazyload } from 'vant';
 export default {
     name:'decortbtn',
     data(){
@@ -30,6 +31,9 @@ export default {
             desidetail:'',
             look:''
         }
+    },
+    components:{
+         back
     },
     created(){
         this.c_id()
@@ -55,6 +59,9 @@ export default {
             var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '/';  
             var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();  
             return(Y+M + D)
+        },
+        onClickLeft() {
+           this.$router.back(-1)
         },
       
     }

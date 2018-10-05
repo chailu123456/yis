@@ -8,11 +8,13 @@ export default new Router({
   routes: [
     {
     	path:'/',
-    	redirect: '/home',
+      redirect: '/home'
+     
     },
     {
       path:'/home',
       name:'home',
+      meta:{keepAlive:true},
       component:(resolve) => require(['@/page/home'],resolve)
     },
     {
@@ -29,7 +31,18 @@ export default new Router({
       path:'/navs',
       name:'name',
       component:(resolve)=>require(['@/components/navs'],resolve)
-    },{
+    },
+    {
+      path:'/load',
+      name:'load',
+      component:(resolve)=>require(['@/components/load'],resolve)
+    },
+    {
+      path:'/back',
+      name:'back',
+      component:(resolve)=>require(['@/components/back'],resolve)
+    },
+    {
       path:'/casebtn',
       name:'casebtn',
       component:(resolve)=>require(['@/page/casebtn'],resolve)
@@ -43,6 +56,11 @@ export default new Router({
       path:'/decortList',
       name:'decortList',
       component:(resolve)=>require(['@/page/decortList'],resolve)
+    },
+    {
+      path:'/designer_introd',
+      name:'designer_introd',
+      component:(resolve)=>require(['@/page/designer_introd'],resolve)
     }
   ]
 })

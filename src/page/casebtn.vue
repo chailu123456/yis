@@ -1,6 +1,9 @@
 
 <template>
+    
     <div class="casebtn">
+        
+        <back></back>
         <img class="titimg" :src="'https://www.yishechina.cn/attachs/'+Img" alt="">
         <div class="person">
             <div class="p_left">
@@ -10,15 +13,15 @@
             <div class="p_right">
                 <img class="r_img" :src="'https://www.yishechina.cn/attachs/'+p_img" alt="">
             </div>
-           
         </div>
-         <div class="detail">
+        <load v-if="show"></load>
+        <div class="detail">
             <div class="speak">{{desidetail}}</div>
         </div>
         <div class="allimg">
             <span v-for="imgA in allimg">
                 <img v-lazy="'https://www.yishechina.cn/attachs/'+imgA.photo" alt="">
-            </span>
+                </span>
             
         </div>
     </div>    
@@ -26,8 +29,10 @@
 
 <script>
 import axios from 'axios';
-import { Lazyload} from 'vant';
-
+import { Header,Lazyload,Loading } from 'vant'
+import load from '@/components/load'
+import back from '@/components/back'
+import api from '../api/index.js'
 export default {
     name:'casebtn',
     data(){
@@ -39,14 +44,19 @@ export default {
             title:'',
             sub_title:'',
             desidetail:'',
-            allimg:[]
+            allimg:[],
+            show:true
         }
     },
     created(){
         this.c_id()
     },
+    components:{
+        load,
+        back
+    },
     methods:{
-        c_id(){
+       c_id(){
             axios({
                 url:"https://www.yishechina.cn/wapp/index.php/Home/Index/case_detail/id/" + this.id}).then(res=>{
                 console.log(res)
@@ -58,6 +68,7 @@ export default {
                 this.desidetail = res.data.intro;
                 this.allimg = res.data.imgs;
                 console.log(this.contents)
+                this.show = false;
             })
         }
     }
@@ -115,7 +126,7 @@ width: 100%;
     font-size: 14px;
 }
 .allimg {
-    padding: 2% 4%;
+   
     width: 92%;
 }
 .allimg span {

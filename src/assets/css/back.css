@@ -1,0 +1,11 @@
+.head .van-nav-bar{
+    height: 50px;
+    background: #63cca3;
+    color: #fff !important;
+}
+.van-nav-bar__text {
+    color: red;
+}
+.head .van-nav-bar .van-icon {
+    color: #fff;
+}
