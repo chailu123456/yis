@@ -78,13 +78,13 @@ export default {
 <style>
 .casebtn {
 width: 100%;
- position: absolute;
+ position: relative;
  top: 0;
  left: 0;
  bottom: 0;
  background: white;
  overflow-x: hidden;
-
+z-index: 16;
 }
 .titimg {
     width: 100%;

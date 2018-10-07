@@ -5,9 +5,10 @@ import App from './App'
 import router from './router'
 import Vant from 'vant'
 import api from './api'
+import per from './api/login'
 import 'vant/lib/vant-css/index.css'
 Vue.config.productionTip = false
-
+Vue.prototype.defines = per
 // or with options (options 为可选参数，无则不传)
 // or with options (options 为可选参数，无则不传)
 import { Lazyload } from 'vant';
@@ -20,10 +21,18 @@ import { Lazyload } from 'vant';
 
 Vue.use(Vant);
 
+router.beforeEach(function(to,from,next){
+  // console.log(to)
+  document.title = to.meta.title
+  next()
+})
+import store from './store'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

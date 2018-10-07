@@ -100,13 +100,14 @@ export default {
 <style scoped>
 .designer {
     width: 100%;
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     bottom: 0;
     background: white;
     overflow-x: hidden;
     text-align:left;
+    z-index: 12;
 }
 .head .van-nav-bar{
     height: 50px;
@@ -137,6 +138,9 @@ export default {
 }
 .van-tabs__line {
     color: #63cca3;
+}
+.cont {
+    height: 100%;
 }
 .contOne {
     padding: 4%;

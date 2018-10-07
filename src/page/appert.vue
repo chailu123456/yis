@@ -1,50 +1,48 @@
 <template>
     <div class="appert">
         <navs>预约</navs>
-        <div class="list">
-            <van-list v-model="loading" loading-text='加载中...' :finished="finished"  @load="onLoad">
-                <p v-for="item in list" :key="item" >{{item}}</p>
+        <ul>
+            <li v-for="book in books">
+                <img class="books" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2651616864,2530638681&fm=26&gp=0.jpg" alt="">
+                <p>
+                     <span>名称：{{book.goodsName}}</span>
+                    <span>价格：{{book.price}}</span>
+                    <button @click="addcar(book)">添加</button>
+                </p>
                
-            </van-list>
-        </div>
+            </li>
+        </ul>
+       
     </div>
 </template>
 <script>
 import navs from '@/components/navs'
-import { List } from 'vant';
+import axios from 'axios'
+import * as Types from '../store/types.js'
 export default {
     name:'appert',
     data(){
         return{
-            msg:'预约',
-            list: [],
-            loading: false,
-            finished: false,
-            a:1
+            books:[]
         }
+    },
+    created(){
+        axios.get('https://www.easy-mock.com/mock/5b8b30dbf032f03c5e71de7f/kuaican/oftenGoods').then(res=>{
+            console.log(res);
+            this.books = res.data;
+        
+        }).catch(error=>{
+            console.log(error)
+        })
+   
     },
     components:{
         navs
     },
     methods: {
-        onLoad() {
-        // 异步更新数据
-            
-            console.log(this.a++)
-            setTimeout(() => {
-                for (let i = 0; i < 30; i++) {
-                    
-                    this.list.push(this.list.length + 1);
-                }
-                // 加载状态结束
-                this.loading = false;
-
-                // 数据全部加载完成
-                // if (this.list.length >= 40) {
-                // this.finished = true;
-                // }
-            }, 500);
-        }
+       addcar(book){
+           this.$store.commit(Types.ADD_CART,book)
+       }
     }
 }
 </script>
@@ -52,5 +50,19 @@ export default {
 .appert {
     width: 100%;
     height: 100%;
+}
+ul li {
+    width: 100%;
+    height: 150px;
+    
+}
+.books {
+    width: 40%;
+    float: left;
+}
+ul li p {
+    width: 60%;
+    float: left;
+    margin-top: 10%;
 }
 </style>

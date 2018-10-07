@@ -8,23 +8,25 @@ export default new Router({
   routes: [
     {
     	path:'/',
-      redirect: '/home'
-     
+      redirect: '/home',
+      meta:{title:'首页'},
     },
     {
       path:'/home',
       name:'home',
-      meta:{keepAlive:true},
+      meta:{keepAlive:true,title:'首页'},
       component:(resolve) => require(['@/page/home'],resolve)
     },
     {
       path:'/about',
       name:'about',
+      meta:{title:'关于'},
       component:(resolve) =>require(['@/page/about'],resolve)
     },
     {
       path:'/appert',
       name:'appert',
+      meta:{title:'预约'},
       component:(resolve) =>require(['@/page/appert'],resolve)
     },
     {
@@ -61,6 +63,12 @@ export default new Router({
       path:'/designer_introd',
       name:'designer_introd',
       component:(resolve)=>require(['@/page/designer_introd'],resolve)
+    },
+    {
+      path:'/login',
+      name:'login',
+      meta:{title:'登陆'},
+      component:(resolve)=>require(['@/page/login'],resolve)
     }
   ]
 })

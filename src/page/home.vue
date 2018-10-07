@@ -75,6 +75,7 @@ export default {
         }
     },
     created(){
+        
         // this.getdata()
         this.yishe()
     
@@ -93,7 +94,6 @@ export default {
             })
         },
         knowledge(id){
-          
             this.$router.push({
                 path:'decortbtn',
                 query:{
@@ -123,13 +123,18 @@ export default {
             } 
         },
         async yishe(){
-            var gethome = await this.$http.home()
-            console.log(gethome)
-            this.images = gethome['banner'];
-            this.caseing = gethome['case'];
-            this.des = gethome['des'];
-            this.gl = gethome['gl'];
-            this.show = false;
+            console.log(this.defines.per.hasenter)
+            if(this.defines.per.hasenter==false){
+                this.$router.push({path:'login'})
+            }
+                var gethome = await this.$http.home()
+                console.log(gethome)
+                this.images = gethome['banner'];
+                this.caseing = gethome['case'];
+                this.des = gethome['des'];
+                this.gl = gethome['gl'];
+                this.show = false;
+            
         }
     },
     components:{

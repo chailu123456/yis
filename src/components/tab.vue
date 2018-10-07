@@ -30,6 +30,7 @@ h1, h2 {
   left: 0;
   width: 100%;
   border-top: 1px solid pink;
+      z-index: 8;
 }
 ul {
   background: #fff;

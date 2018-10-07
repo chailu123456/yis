@@ -71,13 +71,14 @@ export default {
 <style>
 .decortbtn {
 width: 100%;
- position: absolute;
+ position: relative;
  top: 0;
  left: 0;
  bottom: 0;
  background: white;
  overflow-x: hidden;
 text-align:left;
+z-index: 18;
 }
 .box {
     padding: 4%;
