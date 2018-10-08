@@ -47,6 +47,7 @@ export default {
     bottom: 0;
     top: 20%;
     background: #fff;
+    z-index: 87;
 }
 .van-hairline--top-bottom::after {
     border: none;

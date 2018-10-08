@@ -6,13 +6,18 @@
           <button @click="reduce">-</button> -->
 
           <ul>
-              <li v-for="l in carList">
+              <li v-for="(l,i) in carList">
                 <img class="books" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2651616864,2530638681&fm=26&gp=0.jpg" alt="">
                  <p>书名：{{l.goodsName}}</p> 
+                 <button @click="add(l)">+</button>
+                 <button @click="reduce(l)">-</button>
+                 <button @click="remove(l)">删除</button>
                  <p>数量：{{l.bookCount}}</p>
                  <p>小计：{{l.bookCount*l.price}}</p>
               </li>
-              <li>共计{{count}}本</li>
+
+              <li>共计{{count}}本 ||| 共计{{allmoney}}元 <br> 清空购物车<button @click="clear">清空</button> </li>
+          
           </ul>
     </div>
 </template>
@@ -20,8 +25,8 @@
 import navs from '@/components/navs'
 // import store from '@/vuex/store'
 // import { mapState,mapMutations,mapGetters } from 'vuex'
-
-import {mapState,mapGetters} from 'vuex'
+import * as Types from '../store/types.js'
+import {mapState,mapMutations,mapGetters} from 'vuex'
 export default {
     name:'about',
     data(){
@@ -43,7 +48,29 @@ export default {
     },
     computed:{
         ...mapState(['carList']),
-        ...mapGetters(['count'])
+        ...mapGetters(['count','allmoney'])
+    },
+     methods: {
+       add(book){
+           this.$store.commit(Types.ADD_CART,book)
+       },
+       reduce(book){
+           this.$store.commit(Types.REDUCE,book)
+       },
+       findPosition(id){
+           // findIndex查找目标元素，找到返回元素的下标，找不到返回-1
+            return this.carList.findIndex(item=>{
+                return item.goodsId==id
+             })
+        },
+       remove(book){
+           var i=this.findPosition(book.goodsId);
+           console.log(i)
+           this.$store.commit(Types.REMOVE,i)
+       },
+       clear(){
+           this.$store.commit(Types.CLEAR)
+       }
     }
     // methods:mapMutations(['add','reduce'])
 }

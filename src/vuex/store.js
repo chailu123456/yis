@@ -7,7 +7,6 @@ const state = {
 }
 const mutations={
     add(state){
-      
         state.count++;
     },
     reduce(state){
