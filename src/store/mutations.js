@@ -12,7 +12,6 @@ const mutations={
             book.bookCount =1;
             state.carList=[...state.carList,book]
         }
-        
     },
     [Types.REDUCE](state,book){
         // find查找元素，找到返回该元素

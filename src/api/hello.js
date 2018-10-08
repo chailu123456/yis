@@ -1,8 +1,14 @@
-export let school = {
+
+
+let school = {
     name:'sanzhongssssss',
     adress:'fugu'
 }
-export let s = {
+let s = {
     name:'ddd',
     adress:'dddeee'
+}
+export default {
+    school,
+    s
 }

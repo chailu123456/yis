@@ -4,7 +4,6 @@
         <load v-if="show"></load>
       
         <template v-else>
-              
             <div class="banner">
                 <van-swipe  :autoplay="3000">
                     <van-swipe-item v-for="(image, index) in images" :key="index">

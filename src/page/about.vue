@@ -23,6 +23,7 @@
 </template>
 <script>
 import navs from '@/components/navs'
+import api from '../api/hello'
 // import store from '@/vuex/store'
 // import { mapState,mapMutations,mapGetters } from 'vuex'
 import * as Types from '../store/types.js'
@@ -33,6 +34,9 @@ export default {
         return{
             msg:'关于我们'
         }
+    },
+    created(){
+        console.log(api.school)
     },
     // store,
     // computed:{
