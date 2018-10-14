@@ -45,6 +45,16 @@ export default new Router({
       component:(resolve)=>require(['@/components/back'],resolve)
     },
     {
+      path:'/ok',
+      name:'ok',
+      component:(resolve)=>require(['@/components/ok'],resolve)
+    },
+    {
+      path:'/bbb',
+      name:'bbb',
+      component:(resolve)=>require(['@/components/bbb'],resolve)
+    },
+    {
       path:'/casebtn',
       name:'casebtn',
       component:(resolve)=>require(['@/page/casebtn'],resolve)

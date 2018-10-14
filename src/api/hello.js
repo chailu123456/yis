@@ -1,5 +1,4 @@
 
-
 let school = {
     name:'sanzhongssssss',
     adress:'fugu'
